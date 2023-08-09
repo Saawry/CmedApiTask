@@ -21,4 +21,12 @@ class CharacterRepository @Inject constructor(private val apiService: ApiService
     }
 
 
+    suspend fun getCharacter(id:String)= flow {
+        emit(NetworkResult.Loading(true))
+        val response=apiService.getCharacter(id)
+        emit(NetworkResult.Success(response))
+    }.catch{e->
+        emit(NetworkResult.Failure( e.message?: "Unknown Error"))
+    }
+
 }

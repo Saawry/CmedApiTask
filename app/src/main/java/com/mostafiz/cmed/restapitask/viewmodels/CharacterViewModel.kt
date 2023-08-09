@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mostafiz.cmed.restapitask.model.CharacterModel
-import com.mostafiz.cmed.restapitask.model.CharacterResponseModel
 import com.mostafiz.cmed.restapitask.remote.NetworkResult
 import com.mostafiz.cmed.restapitask.repositories.CharacterRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -29,6 +28,14 @@ class CharacterViewModel @Inject constructor(private val repository: CharacterRe
         }
     }
 
+
+    fun getAllCharacters(id:String){
+        viewModelScope.launch {
+            repository.getCharacter(id).collect{
+                _allCharacterResponse.postValue(it)
+            }
+        }
+    }
 
 
 }
