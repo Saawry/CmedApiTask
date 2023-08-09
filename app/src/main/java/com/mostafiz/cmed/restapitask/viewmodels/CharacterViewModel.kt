@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mostafiz.cmed.restapitask.model.CharacterModel
 import com.mostafiz.cmed.restapitask.model.CharacterResponseModel
 import com.mostafiz.cmed.restapitask.remote.NetworkResult
 import com.mostafiz.cmed.restapitask.repositories.CharacterRepository
@@ -15,8 +16,8 @@ import javax.inject.Inject
 class CharacterViewModel @Inject constructor(private val repository: CharacterRepository):ViewModel() {
 
 
-    private var _allCharacterResponse=MutableLiveData<NetworkResult<CharacterResponseModel>>()
-    val allCharacterResponse: LiveData<NetworkResult<CharacterResponseModel>> =_allCharacterResponse
+    private var _allCharacterResponse=MutableLiveData<NetworkResult<List<CharacterModel>>>()
+    val allCharacterResponse: LiveData<NetworkResult<List<CharacterModel>>> =_allCharacterResponse
 
 
 
