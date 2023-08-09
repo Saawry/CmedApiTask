@@ -33,7 +33,7 @@ data class CharacterModel (
     val name: String,
 
     @Json(name = "alternate_names")
-    val alternateNames: List<String>,
+    val alternateNames: List<String>?,
 
     val species: Species,
     val gender: Gender,
